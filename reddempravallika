@@ -1,0 +1,735 @@
+> head(flags)
+            name landmass zone area population language religion bars stripes colours
+1    Afghanistan        5    1  648         16       10        2    0       3       5
+2        Albania        3    1   29          3        6        6    0       0       3
+3        Algeria        4    1 2388         20        8        2    2       0       3
+4 American-Samoa        6    3    0          0        1        1    0       0       5
+5        Andorra        3    1    0          0        6        0    3       0       3
+6         Angola        4    2 1247          7       10        5    0       2       3
+  red green blue gold white black orange mainhue circles crosses saltires quarters
+1   1     1    0    1     1     1      0   green       0       0        0        0
+2   1     0    0    1     0     1      0     red       0       0        0        0
+3   1     1    0    0     1     0      0   green       0       0        0        0
+4   1     0    1    1     1     0      1    blue       0       0        0        0
+5   1     0    1    1     0     0      0    gold       0       0        0        0
+6   1     0    0    1     0     1      0     red       0       0        0        0
+  sunstars crescent triangle icon animate text topleft botright
+1        1        0        0    1       0    0   black    green
+2        1        0        0    0       1    0     red      red
+3        1        1        0    0       0    0   green    white
+4        0        0        1    1       1    0    blue      red
+5        0        0        0    0       0    0    blue      red
+6        1        0        0    1       0    0     red    black
+> dim(flags)
+[1] 194
+
+| This tells us that there are 194 rows, or observations, and 30 columns, or variables.
+| Each observation is a country and each variable describes some characteristic of that
+| country or its flag. To open a more complete description of the dataset in a separate
+| text file, type viewinfo() when you are back at the prompt (>).
+
+ 
+> class(flags)
+[1] "data.frame"
+
+
+> cls_list <- lapply(flags, class)
+
+
+> cls_list
+$name
+[1] "factor"
+
+$landmass
+[1] "integer"
+
+$zone
+[1] "integer"
+
+$area
+[1] "integer"
+
+$population
+[1] "integer"
+
+$language
+[1] "integer"
+
+$religion
+[1] "integer"
+
+$bars
+[1] "integer"
+
+$stripes
+[1] "integer"
+
+$colours
+[1] "integer"
+
+$red
+[1] "integer"
+
+$green
+[1] "integer"
+
+$blue
+[1] "integer"
+
+$gold
+[1] "integer"
+
+$white
+[1] "integer"
+
+$black
+[1] "integer"
+
+$orange
+[1] "integer"
+
+$mainhue
+[1] "factor"
+
+$circles
+[1] "integer"
+
+$crosses
+[1] "integer"
+
+$saltires
+[1] "integer"
+
+$quarters
+[1] "integer"
+
+$sunstars
+[1] "integer"
+
+$crescent
+[1] "integer"
+
+$triangle
+[1] "integer"
+
+$icon
+[1] "integer"
+
+$animate
+[1] "integer"
+
+$text
+[1] "integer"
+
+$topleft
+[1] "factor"
+
+$botright
+[1] "factor"
+
+
+
+
+> class(cls_list)
+[1] "list"
+
+
+
+> as.character(cls_list)
+ [1] "factor"  "integer" "integer" "integer" "integer" "integer" "integer" "integer"
+ [9] "integer" "integer" "integer" "integer" "integer" "integer" "integer" "integer"
+[17] "integer" "factor"  "integer" "integer" "integer" "integer" "integer" "integer"
+[25] "integer" "integer" "integer" "integer" "factor"  "factor" 
+
+
+
+> play()
+
+
+
+> class(cls_list)
+[1] "list"
+> nxt()
+
+
+
+> ?sapply
+> cls_vect <- sapply(flags, class)
+
+
+
+> class(cls_vect)
+[1] "character"
+
+
+
+
+> sum(flags$orange)
+[1] 26
+
+
+
+> flag_colors <- flags[, 11:17]
+
+
+> head(flag_colors)
+  red green blue gold white black orange
+1   1     1    0    1     1     1      0
+2   1     0    0    1     0     1      0
+3   1     1    0    0     1     0      0
+4   1     0    1    1     1     0      1
+5   1     0    1    1     0     0      0
+6   1     0    0    1     0     1      0
+
+
+
+> lapply(flag_colors, sum)
+$red
+[1] 153
+
+$green
+[1] 91
+
+$blue
+[1] 99
+
+$gold
+[1] 91
+
+$white
+[1] 146
+
+$black
+[1] 52
+
+$orange
+[1] 26
+
+
+
+
+> sapply(flag_colors)
+Error in match.fun(FUN) : argument "FUN" is missing, with no default
+> sapply(flag_colors, sum)
+   red  green   blue   gold  white  black orange 
+   153     91     99     91    146     52     26 
+
+
+> sapply(flag_colors, mean)
+      red     green      blue      gold     white     black    orange 
+0.7886598 0.4690722 0.5103093 0.4690722 0.7525773 0.2680412 0.1340206 
+
+
+
+> flag_shapes <- flags[, 19:23]
+
+
+> lapply(flag_shapes, range)
+$circles
+[1] 0 4
+
+$crosses
+[1] 0 2
+
+$saltires
+[1] 0 1
+
+$quarters
+[1] 0 4
+
+$sunstars
+[1]  0 50
+
+
+
+
+> sapply(flag_shapes, range)
+     circles crosses saltires quarters sunstars
+[1,]       0       0        0        0        0
+[2,]       4       2        1        4       50
+
+
+
+> shape_mat <- sapply(flag_shapes, range)
+
+
+
+> shape_mat
+     circles crosses saltires quarters sunstars
+[1,]       0       0        0        0        0
+[2,]       4       2        1        4       50
+
+
+
+> class(shape_mat)
+[1] "matrix"
+
+
+
+ 
+
+> unique(c(3,4, 5, 5, 5, 6, 6))
+[1] 3 4 5 6
+
+| That's correct!
+
+ 
+> unique_vals <- lapply(flags, unique)
+
+
+
+> unique_vals
+$name
+  [1] Afghanistan              Albania                  Algeria                 
+  [4] American-Samoa           Andorra                  Angola                  
+  [7] Anguilla                 Antigua-Barbuda          Argentina               
+ [10] Argentine                Australia                Austria                 
+ [13] Bahamas                  Bahrain                  Bangladesh              
+ [16] Barbados                 Belgium                  Belize                  
+ [19] Benin                    Bermuda                  Bhutan                  
+ [22] Bolivia                  Botswana                 Brazil                  
+ [25] British-Virgin-Isles     Brunei                   Bulgaria                
+ [28] Burkina                  Burma                    Burundi                 
+ [31] Cameroon                 Canada                   Cape-Verde-Islands      
+ [34] Cayman-Islands           Central-African-Republic Chad                    
+ [37] Chile                    China                    Colombia                
+ [40] Comorro-Islands          Congo                    Cook-Islands            
+ [43] Costa-Rica               Cuba                     Cyprus                  
+ [46] Czechoslovakia           Denmark                  Djibouti                
+ [49] Dominica                 Dominican-Republic       Ecuador                 
+ [52] Egypt                    El-Salvador              Equatorial-Guinea       
+ [55] Ethiopia                 Faeroes                  Falklands-Malvinas      
+ [58] Fiji                     Finland                  France                  
+ [61] French-Guiana            French-Polynesia         Gabon                   
+ [64] Gambia                   Germany-DDR              Germany-FRG             
+ [67] Ghana                    Gibraltar                Greece                  
+ [70] Greenland                Grenada                  Guam                    
+ [73] Guatemala                Guinea                   Guinea-Bissau           
+ [76] Guyana                   Haiti                    Honduras                
+ [79] Hong-Kong                Hungary                  Iceland                 
+ [82] India                    Indonesia                Iran                    
+ [85] Iraq                     Ireland                  Israel                  
+ [88] Italy                    Ivory-Coast              Jamaica                 
+ [91] Japan                    Jordan                   Kampuchea               
+ [94] Kenya                    Kiribati                 Kuwait                  
+ [97] Laos                     Lebanon                  Lesotho                 
+[100] Liberia                  Libya                    Liechtenstein           
+[103] Luxembourg               Malagasy                 Malawi                  
+[106] Malaysia                 Maldive-Islands          Mali                    
+[109] Malta                    Marianas                 Mauritania              
+[112] Mauritius                Mexico                   Micronesia              
+[115] Monaco                   Mongolia                 Montserrat              
+[118] Morocco                  Mozambique               Nauru                   
+[121] Nepal                    Netherlands              Netherlands-Antilles    
+[124] New-Zealand              Nicaragua                Niger                   
+[127] Nigeria                  Niue                     North-Korea             
+[130] North-Yemen              Norway                   Oman                    
+[133] Pakistan                 Panama                   Papua-New-Guinea        
+[136] Parguay                  Peru                     Philippines             
+[139] Poland                   Portugal                 Puerto-Rico             
+[142] Qatar                    Romania                  Rwanda                  
+[145] San-Marino               Sao-Tome                 Saudi-Arabia            
+[148] Senegal                  Seychelles               Sierra-Leone            
+[151] Singapore                Soloman-Islands          Somalia                 
+[154] South-Africa             South-Korea              South-Yemen             
+[157] Spain                    Sri-Lanka                St-Helena               
+[160] St-Kitts-Nevis           St-Lucia                 St-Vincent              
+[163] Sudan                    Surinam                  Swaziland               
+[166] Sweden                   Switzerland              Syria                   
+[169] Taiwan                   Tanzania                 Thailand                
+[172] Togo                     Tonga                    Trinidad-Tobago         
+[175] Tunisia                  Turkey                   Turks-Cocos-Islands     
+[178] Tuvalu                   UAE                      Uganda                  
+[181] UK                       Uruguay                  US-Virgin-Isles         
+[184] USA                      USSR                     Vanuatu                 
+[187] Vatican-City             Venezuela                Vietnam                 
+[190] Western-Samoa            Yugoslavia               Zaire                   
+[193] Zambia                   Zimbabwe                
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe
+
+$landmass
+[1] 5 3 4 6 1 2
+
+$zone
+[1] 1 3 2 4
+
+$area
+  [1]   648    29  2388     0  1247  2777  7690    84    19     1   143    31    23
+ [14]   113    47  1099   600  8512     6   111   274   678    28   474  9976     4
+ [27]   623  1284   757  9561  1139     2   342    51   115     9   128    43    22
+ [40]    49   284  1001    21  1222    12    18   337   547    91   268    10   108
+ [53]   249   239   132  2176   109   246    36   215   112    93   103  3268  1904
+ [66]  1648   435    70   301   323    11   372    98   181   583   236    30  1760
+ [79]     3   587   118   333  1240  1031  1973  1566   447   783   140    41  1267
+ [92]   925   121   195   324   212   804    76   463   407  1285   300   313    92
+[105]   237    26  2150   196    72   637  1221    99   288   505    66  2506    63
+[118]    17   450   185   945   514    57     5   164   781   245   178  9363 22402
+[131]    15   912   256   905   753   391
+
+$population
+ [1]   16    3   20    0    7   28   15    8   90   10    1    6  119    9   35    4
+[17]   24    2   11 1008    5   47   31   54   17   61   14  684  157   39   57  118
+[33]   13   77   12   56   18   84   48   36   22   29   38   49   45  231  274   60
+
+$language
+ [1] 10  6  8  1  2  4  3  5  7  9
+
+$religion
+[1] 2 6 1 0 5 3 4 7
+
+$bars
+[1] 0 2 3 1 5
+
+$stripes
+ [1]  3  0  2  1  5  9 11 14  4  6 13  7
+
+$colours
+[1] 5 3 2 8 6 4 7 1
+
+$red
+[1] 1 0
+
+$green
+[1] 1 0
+
+$blue
+[1] 0 1
+
+$gold
+[1] 1 0
+
+$white
+[1] 1 0
+
+$black
+[1] 1 0
+
+$orange
+[1] 0 1
+
+$mainhue
+[1] green  red    blue   gold   white  orange black  brown 
+Levels: black blue brown gold green orange red white
+
+$circles
+[1] 0 1 4 2
+
+$crosses
+[1] 0 1 2
+
+$saltires
+[1] 0 1
+
+$quarters
+[1] 0 1 4
+
+$sunstars
+ [1]  1  0  6 22 14  3  4  5 15 10  7  2  9 50
+
+$crescent
+[1] 0 1
+
+$triangle
+[1] 0 1
+
+$icon
+[1] 1 0
+
+$animate
+[1] 0 1
+
+$text
+[1] 0 1
+
+$topleft
+[1] black  red    green  blue   white  orange gold  
+Levels: black blue gold green orange red white
+
+$botright
+[1] green  red    white  black  blue   gold   orange brown 
+Levels: black blue brown gold green orange red white
+
+
+
+
+> sapply(unique_vals, length)
+      name   landmass       zone       area population   language   religion       bars 
+       194          6          4        136         48         10          8          5 
+   stripes    colours        red      green       blue       gold      white      black 
+        12          8          2          2          2          2          2          2 
+    orange    mainhue    circles    crosses   saltires   quarters   sunstars   crescent 
+         2          8          4          3          2          3         14          2 
+  triangle       icon    animate       text    topleft   botright 
+         2          2          2          2          7          8 
+
+
+
+
+> sapply(flags, unique)
+$name
+  [1] Afghanistan              Albania                  Algeria                 
+  [4] American-Samoa           Andorra                  Angola                  
+  [7] Anguilla                 Antigua-Barbuda          Argentina               
+ [10] Argentine                Australia                Austria                 
+ [13] Bahamas                  Bahrain                  Bangladesh              
+ [16] Barbados                 Belgium                  Belize                  
+ [19] Benin                    Bermuda                  Bhutan                  
+ [22] Bolivia                  Botswana                 Brazil                  
+ [25] British-Virgin-Isles     Brunei                   Bulgaria                
+ [28] Burkina                  Burma                    Burundi                 
+ [31] Cameroon                 Canada                   Cape-Verde-Islands      
+ [34] Cayman-Islands           Central-African-Republic Chad                    
+ [37] Chile                    China                    Colombia                
+ [40] Comorro-Islands          Congo                    Cook-Islands            
+ [43] Costa-Rica               Cuba                     Cyprus                  
+ [46] Czechoslovakia           Denmark                  Djibouti                
+ [49] Dominica                 Dominican-Republic       Ecuador                 
+ [52] Egypt                    El-Salvador              Equatorial-Guinea       
+ [55] Ethiopia                 Faeroes                  Falklands-Malvinas      
+ [58] Fiji                     Finland                  France                  
+ [61] French-Guiana            French-Polynesia         Gabon                   
+ [64] Gambia                   Germany-DDR              Germany-FRG             
+ [67] Ghana                    Gibraltar                Greece                  
+ [70] Greenland                Grenada                  Guam                    
+ [73] Guatemala                Guinea                   Guinea-Bissau           
+ [76] Guyana                   Haiti                    Honduras                
+ [79] Hong-Kong                Hungary                  Iceland                 
+ [82] India                    Indonesia                Iran                    
+ [85] Iraq                     Ireland                  Israel                  
+ [88] Italy                    Ivory-Coast              Jamaica                 
+ [91] Japan                    Jordan                   Kampuchea               
+ [94] Kenya                    Kiribati                 Kuwait                  
+ [97] Laos                     Lebanon                  Lesotho                 
+[100] Liberia                  Libya                    Liechtenstein           
+[103] Luxembourg               Malagasy                 Malawi                  
+[106] Malaysia                 Maldive-Islands          Mali                    
+[109] Malta                    Marianas                 Mauritania              
+[112] Mauritius                Mexico                   Micronesia              
+[115] Monaco                   Mongolia                 Montserrat              
+[118] Morocco                  Mozambique               Nauru                   
+[121] Nepal                    Netherlands              Netherlands-Antilles    
+[124] New-Zealand              Nicaragua                Niger                   
+[127] Nigeria                  Niue                     North-Korea             
+[130] North-Yemen              Norway                   Oman                    
+[133] Pakistan                 Panama                   Papua-New-Guinea        
+[136] Parguay                  Peru                     Philippines             
+[139] Poland                   Portugal                 Puerto-Rico             
+[142] Qatar                    Romania                  Rwanda                  
+[145] San-Marino               Sao-Tome                 Saudi-Arabia            
+[148] Senegal                  Seychelles               Sierra-Leone            
+[151] Singapore                Soloman-Islands          Somalia                 
+[154] South-Africa             South-Korea              South-Yemen             
+[157] Spain                    Sri-Lanka                St-Helena               
+[160] St-Kitts-Nevis           St-Lucia                 St-Vincent              
+[163] Sudan                    Surinam                  Swaziland               
+[166] Sweden                   Switzerland              Syria                   
+[169] Taiwan                   Tanzania                 Thailand                
+[172] Togo                     Tonga                    Trinidad-Tobago         
+[175] Tunisia                  Turkey                   Turks-Cocos-Islands     
+[178] Tuvalu                   UAE                      Uganda                  
+[181] UK                       Uruguay                  US-Virgin-Isles         
+[184] USA                      USSR                     Vanuatu                 
+[187] Vatican-City             Venezuela                Vietnam                 
+[190] Western-Samoa            Yugoslavia               Zaire                   
+[193] Zambia                   Zimbabwe                
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe
+
+$landmass
+[1] 5 3 4 6 1 2
+
+$zone
+[1] 1 3 2 4
+
+$area
+  [1]   648    29  2388     0  1247  2777  7690    84    19     1   143    31    23
+ [14]   113    47  1099   600  8512     6   111   274   678    28   474  9976     4
+ [27]   623  1284   757  9561  1139     2   342    51   115     9   128    43    22
+ [40]    49   284  1001    21  1222    12    18   337   547    91   268    10   108
+ [53]   249   239   132  2176   109   246    36   215   112    93   103  3268  1904
+ [66]  1648   435    70   301   323    11   372    98   181   583   236    30  1760
+ [79]     3   587   118   333  1240  1031  1973  1566   447   783   140    41  1267
+ [92]   925   121   195   324   212   804    76   463   407  1285   300   313    92
+[105]   237    26  2150   196    72   637  1221    99   288   505    66  2506    63
+[118]    17   450   185   945   514    57     5   164   781   245   178  9363 22402
+[131]    15   912   256   905   753   391
+
+$population
+ [1]   16    3   20    0    7   28   15    8   90   10    1    6  119    9   35    4
+[17]   24    2   11 1008    5   47   31   54   17   61   14  684  157   39   57  118
+[33]   13   77   12   56   18   84   48   36   22   29   38   49   45  231  274   60
+
+$language
+ [1] 10  6  8  1  2  4  3  5  7  9
+
+$religion
+[1] 2 6 1 0 5 3 4 7
+
+$bars
+[1] 0 2 3 1 5
+
+$stripes
+ [1]  3  0  2  1  5  9 11 14  4  6 13  7
+
+$colours
+[1] 5 3 2 8 6 4 7 1
+
+$red
+[1] 1 0
+
+$green
+[1] 1 0
+
+$blue
+[1] 0 1
+
+$gold
+[1] 1 0
+
+$white
+[1] 1 0
+
+$black
+[1] 1 0
+
+$orange
+[1] 0 1
+
+$mainhue
+[1] green  red    blue   gold   white  orange black  brown 
+Levels: black blue brown gold green orange red white
+
+$circles
+[1] 0 1 4 2
+
+$crosses
+[1] 0 1 2
+
+$saltires
+[1] 0 1
+
+$quarters
+[1] 0 1 4
+
+$sunstars
+ [1]  1  0  6 22 14  3  4  5 15 10  7  2  9 50
+
+$crescent
+[1] 0 1
+
+$triangle
+[1] 0 1
+
+$icon
+[1] 1 0
+
+$animate
+[1] 0 1
+
+$text
+[1] 0 1
+
+$topleft
+[1] black  red    green  blue   white  orange gold  
+Levels: black blue gold green orange red white
+
+$botright
+[1] green  red    white  black  blue   gold   orange brown 
+Levels: black blue brown gold green orange red white
+
+
+
+
+> lapply(unique_vals, function(elem) elem[2])
+$name
+[1] Albania
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe
+
+$landmass
+[1] 3
+
+$zone
+[1] 3
+
+$area
+[1] 29
+
+$population
+[1] 3
+
+$language
+[1] 6
+
+$religion
+[1] 6
+
+$bars
+[1] 2
+
+$stripes
+[1] 0
+
+$colours
+[1] 3
+
+$red
+[1] 0
+
+$green
+[1] 0
+
+$blue
+[1] 1
+
+$gold
+[1] 0
+
+$white
+[1] 0
+
+$black
+[1] 0
+
+$orange
+[1] 1
+
+$mainhue
+[1] red
+Levels: black blue brown gold green orange red white
+
+$circles
+[1] 1
+
+$crosses
+[1] 1
+
+$saltires
+[1] 1
+
+$quarters
+[1] 1
+
+$sunstars
+[1] 0
+
+$crescent
+[1] 1
+
+$triangle
+[1] 1
+
+$icon
+[1] 0
+
+$animate
+[1] 1
+
+$text
+[1] 1
+
+$topleft
+[1] red
+Levels: black blue gold green orange red white
+
+$botright
+[1] red
+Levels: black blue brown gold green orange red white
